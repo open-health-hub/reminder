@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block extra_js %}
+<script type="text/javascript">
+
+    var post_url = "/api/reminders/";
+
+</script>
+{% endblock %}
+
+{% block content %}
+<div id="content">
+
+    <header class="content_header">
+
+        <h1>Just a sec…</h1>
+        <p>You're just two clicks from getting started with Take Your Meds</p>
+
+    </header>
+
+    <div class="container">
+
+        <ul class="list-group">
+            <li class="list-group-item">First month free, then just £3/month for unlimited reminders.</li>
+            <li class="list-group-item">No minimum term.</li>
+            <li class="list-group-item">Secure payment gateway.</li>
+            <li class="list-group-item">24/7 support if you have any questions.</li>
+        </ul>
+
+        <form action="" method="post">
+          {% csrf_token %}
+
+          <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                  data-name="Take Your Meds"
+                  data-description="30 day free trial, then £3.00 p/m"
+                  data-key="{{ publishable_key }}"
+                  data-email="{{ email }}"
+                  data-currency="gbp"
+                  data-label="Subscribe now"
+                  data-panel-label="Start free trial"></script>
+
+          <input type="hidden" name="stripe_token" />
+        </form>
+
+    </div>
+
+    <div class="clearfix"></div>
+
+</div>
+
+<div class="success-message">
+    <p><strong>Thanks!</strong> Your reminders have been successfully set up.</p>
+</div>
+
+{% endblock %}
+

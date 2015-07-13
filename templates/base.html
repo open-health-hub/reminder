@@ -7,7 +7,9 @@
     <meta name="robots" content="noindex, nofollow">
     <title>Take Your Meds - Phone reminders to help you and yours remember to take your medication</title>
 
-    <link href='//fonts.googleapis.com/css?family=Merriweather:300,400,700' rel='stylesheet' type='text/css' />
+    <link href='http://fonts.googleapis.com/css?family=Merriweather:300,400,700' rel='stylesheet' type='text/css' />
+    <!-- <link href="/static/css/bootstrap.min.css" rel="stylesheet" media="screen" /> -->
+
     <link href="/static/css/normalize.css" rel="stylesheet" media="screen" />
     <link href="/static/css/main.css" rel="stylesheet" media="screen" />
 
@@ -35,12 +37,19 @@
             <li><a href="/accounts/signup/">Register</a></li>
             <li><a href="/accounts/login/">Login</a></li>
             {% endif %}
-
         </ul>
 
     </div>
 
 </header>
+
+<div id="messages">
+    <div class="container">
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+        {% endfor %}
+    </div>
+</div>
 
 {% block content %}
 {% endblock %}

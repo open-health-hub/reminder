@@ -34,4 +34,5 @@ urlpatterns = [
     url('^reminder/', include("reminder.urls")),
     url(r'^api/', include(router.urls)),
     url(r'^accounts/', include('allauth.urls')),
+    url('^payments/', include("payments.urls")),
 ]

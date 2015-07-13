@@ -1,11 +1,18 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-
+from django.core.urlresolvers import reverse
+from django.http import HttpResponseRedirect, HttpResponseForbidden
+from django.contrib import messages
+from django.views.generic import FormView, TemplateView
+from .models import Reminder
 
 @login_required
 def new_reminder(request):
-    return render(request, 'new_reminder.html')
 
+    if hasattr(request.user, "subscription"):
+        return render(request, 'new_reminder.html')
+    else:
+        return HttpResponseRedirect(reverse("subscribe"))
 
 @login_required
 def list_reminders(request):
