@@ -22,6 +22,22 @@ TWILIO_CONFIGS = {
 }
 TWILIO_CONFIG = TWILIO_CONFIGS["default"]
 
+STRIPE_CONFIGS = {
+    # "test": {
+        # "PUBLIC_KEY": "XXX",
+        # "SECRET_KEY": "XXX",
+        # "PLAN_ID": "BOGOF",
+    # },
+    "default": {
+        "PUBLIC_KEY": "XXX",
+        "SECRET_KEY": "XXX", # Both public and secret key
+        # can be found on https://dashboard.stripe.com/account/apikeys
+        "PLAN_ID": "four-pound-a-manth", # The plan used when a user subscribes.
+        # Can be found at https://dashboard.stripe.com/plans
+    }
+}
+STRIPE_CONFIG = STRIPE_CONFIGS["default"]
+
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 # Your twilio SMS-enabled phone number
@@ -31,7 +47,3 @@ TW_FROM_NUMBER="+44......"
 # up the TwilML because Ross is too lazy to work out the
 # server name dynamically.
 TW_ROOT_URL="http://127.0.0.1:8000/telephony/info"
-
-STRIPE_PUBLIC_KEY = "pk_test_KVrAfaHNBkN15KR1Oi8pLWL6"
-
-STRIPE_SECRET_KEY = "sk_test_cPNACljvxG4Uw8BnEH2Fi90N"

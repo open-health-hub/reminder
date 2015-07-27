@@ -14,7 +14,7 @@ from .forms import StripeForm
 class StripeMixin(object):
     def get_context_data(self, **kwargs):
         context = super(StripeMixin, self).get_context_data(**kwargs)
-        context['publishable_key'] = settings.STRIPE_PUBLIC_KEY
+        context['publishable_key'] = settings.STRIPE_CONFIG["PUBLIC_KEY"]
         context['email'] = self.request.user.email
         return context
 
@@ -32,7 +32,7 @@ class SubscribeView(StripeMixin, FormView):
     success_url = reverse_lazy('thank_you')
 
     def form_valid(self, form):
-        stripe.api_key = settings.STRIPE_SECRET_KEY
+        stripe.api_key = settings.STRIPE_CONFIG["SECRET_KEY"]
 
         customer_data = {
             'description': 'Some Customer Data',
@@ -40,7 +40,7 @@ class SubscribeView(StripeMixin, FormView):
         }
         customer = stripe.Customer.create(**customer_data)
 
-        subscription = customer.subscriptions.create(plan="four-pound-a-manth")
+        subscription = customer.subscriptions.create(plan=settings.STRIPE_CONFIG["PLAN_ID"])
 
         s = Subscription(stripe_subscription_id=subscription.id,owner_id=self.request.user.id)
         s.save()
