@@ -44,6 +44,7 @@ INSTALLED_APPS = (
     'rest_framework',
     'allauth',
     'allauth.account',
+    'payments'
 )
 
 MIDDLEWARE_CLASSES = (

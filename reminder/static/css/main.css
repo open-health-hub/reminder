@@ -16,6 +16,10 @@ General
 Site structure
 -------- */
 
+html {
+		font-family: "Helvetica", Arial, sans-serif;
+}
+
 body {
 	background: #1C3048;
 }
@@ -27,7 +31,7 @@ body {
 	padding-top: 0.5em;
 }
 
-.site_header .container { 
+.site_header .container {
 	position: relative;
 }
 
@@ -50,8 +54,7 @@ body {
 
 .site_header .site_nav li {
 	float: left;
-	font-weight: lighter;
-	font-size: 0.8em;
+	font-size: 0.9em;
 	margin: 1.2em 1em;
 		text-align: center;
 }
@@ -130,6 +133,14 @@ body {
 	max-width: 450px;
 }
 
+#messages {
+	background: #fff;
+}
+
+#messages .alert {
+	margin-top: 20px;
+}
+
 /* --------
 Create reminder form
 -------- */
@@ -152,6 +163,7 @@ Create reminder form
 	padding: 6px 12px;
 	vertical-align: middle;
 	width: 48.5%;
+	color: #ccc;
 }
 
 #message-selector label+label {
@@ -202,6 +214,11 @@ Create reminder form
 	max-width: 100%;
 	padding: 1em 1.5em;
 	width: 100%;
+}
+
+#content #reminder-schedule p.label {
+	color: #333;
+	text-align: left;
 }
 
 #content #reminder-schedule p {
